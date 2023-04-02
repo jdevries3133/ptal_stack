@@ -1,0 +1,2 @@
+[workspace]
+members = ["client-leptos", "client-tauri", "server"]

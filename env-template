@@ -1,0 +1,5 @@
+POSTGRES_USER=you
+POSTGRES_PASSWORD=somepassword
+POSTGRES_DB=ptal_stack_sql
+
+DATABASE_URL=postgres://you:somepassword@localhost:5432/ptal_stack_sql

@@ -35,13 +35,6 @@ stop-db:
 
 reset-db: stop-db
 	make start-db
-	@# The session token in the browser remains valid after resetting the
-	@# database. We'll fool the app into thinking we're a user with an
-	@# existing uid, even though the user no longer exists in the database,
-	@# so we need to clear our browser cookies after resetting the dev database
-	@echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	@echo "!!!!! NOW CLEAR YOUR BROWSER COOKIES !!!!"
-	@echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 watch-db:
 	docker logs -f $(DB_CONTAINER_NAME)

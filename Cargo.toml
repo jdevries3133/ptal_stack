@@ -1,2 +1,2 @@
 [workspace]
-members = ["client-leptos", "client-tauri", "server"]
+members = ["client-leptos", "client-tauri", "server", "common"]

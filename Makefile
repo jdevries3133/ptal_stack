@@ -13,6 +13,11 @@ dev:
 	  'cargo watch -x "run --bin server"' \
 	  'make tailwind-dev'
 
+# Run clippy in cargo watch; I usually keep this going in my terminal while I
+# write code for nearly instant continuous feedback
+clip:
+	cargo watch -x clippy
+
 
 # END Database ################################################################
 
@@ -47,6 +52,8 @@ shell-db:
 # Tailwind / npm ##############################################################
 
 tailwind-dev:
+	# Affected by https://github.com/tailwindlabs/tailwindcss/issues/9870
+	# / https://github.com/tailwindlabs/tailwindcss/issues/8517
 	npx tailwindcss \
 		-c ./client-leptos/tailwind.config.js \
 		-i ./client-leptos/tailwind.css \
@@ -54,6 +61,8 @@ tailwind-dev:
 		--watch
 
 tailwind-build:
+	# Affected by https://github.com/tailwindlabs/tailwindcss/issues/9870
+	# / https://github.com/tailwindlabs/tailwindcss/issues/8517
 	npx tailwindcss \
 		-c ./client-leptos/tailwind.config.js \
 		-i ./client-leptos/tailwind.css \

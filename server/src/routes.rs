@@ -65,7 +65,7 @@ pub async fn profile(
 
     let dog = upsert_dog_of_the_day(&mut ctx.dbc)
         .await
-        .map_err(|e| err_and_log(e))?;
+        .map_err(err_and_log)?;
 
     Ok(HttpResponse::Ok().json(Profile {
         user: ctx.user,
@@ -88,7 +88,7 @@ pub async fn login(
 
         Ok(HttpResponse::Ok().body(response_data))
     } else {
-        Ok(HttpResponse::Unauthorized().finish())
+        Ok(HttpResponse::Unauthorized().body("bad credentials"))
     }
 }
 
@@ -102,7 +102,7 @@ pub async fn register(
     let hashed_pw = hash_new(&payload.password);
     let user = register_user(&mut dbc, &payload.username, &payload.email, &hashed_pw)
         .await
-        .map_err(|e| err_and_log(e))?;
+        .map_err(err_and_log)?;
 
     println!("{} has registered", payload.username);
 

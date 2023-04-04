@@ -1,7 +1,9 @@
 use std::env;
 
+use actix_cors::Cors;
 use actix_web::{middleware, web, App, HttpServer};
 use dotenvy::dotenv;
+use http;
 use sqlx::postgres::PgPoolOptions;
 
 mod auth;
@@ -36,8 +38,15 @@ async fn main() -> std::io::Result<()> {
     let pool = create_pg_pool().await;
 
     let srv = HttpServer::new(move || {
+        let cors = Cors::default()
+            .allow_any_origin()
+            .allow_any_method()
+            .allow_any_header()
+            .max_age(3600);
+
         App::new()
             .wrap(middleware::DefaultHeaders::new().add(("content-type", "application/json")))
+            .wrap(cors)
             .app_data(web::Data::new(pool.to_owned()))
             .service(
                 web::scope("/api/v1")

@@ -31,7 +31,8 @@
       "targets": "all"
     },
     "security": {
-      "csp": null
+      "csp": null,
+      "devCsp": ""
     },
     "updater": {
       "active": false

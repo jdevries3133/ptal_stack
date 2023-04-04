@@ -20,6 +20,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "actix-cors"
+version = "0.6.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b340e9cfa5b08690aae90fb61beb44e9b06f44fe3d0f93781aaa58cfba86245e"
+dependencies = [
+ "actix-utils",
+ "actix-web",
+ "derive_more",
+ "futures-util",
+ "log",
+ "once_cell",
+ "smallvec",
+]
+
+[[package]]
 name = "actix-http"
 version = "3.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -765,8 +780,11 @@ dependencies = [
 name = "client-leptos"
 version = "0.0.0"
 dependencies = [
+ "anyhow",
+ "common",
  "js-sys",
  "leptos",
+ "reqwest",
  "serde",
  "serde-wasm-bindgen",
  "wasm-bindgen",
@@ -4016,6 +4034,7 @@ dependencies = [
 name = "server"
 version = "0.1.0"
 dependencies = [
+ "actix-cors",
  "actix-web",
  "ammonia",
  "anyhow",
@@ -4024,6 +4043,7 @@ dependencies = [
  "common",
  "dotenvy",
  "hmac",
+ "http",
  "minify-html",
  "rand 0.8.5",
  "reqwest",

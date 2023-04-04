@@ -9,8 +9,8 @@ create schema ptal_stack_sql;
 
 create table users(
     id serial primary key,
-    username varchar(255) not null,
-    email varchar(255) not null
+    username varchar(255) unique not null,
+    email varchar(255) unique not null
 );
 
 create table password(

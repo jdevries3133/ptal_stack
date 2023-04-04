@@ -22,7 +22,7 @@ pub fn err_and_log(e: anyhow::Error) -> error::Error {
 }
 
 pub async fn get_db(db: web::Data<sqlx::Pool<sqlx::Postgres>>) -> Result<PoolConnection<Postgres>> {
-    Ok(db.acquire().await.map_err(|e| err_and_log(e.into()))?)
+    db.acquire().await.map_err(|e| err_and_log(e.into()))
 }
 
 fn get_user(req: HttpRequest) -> Option<User> {

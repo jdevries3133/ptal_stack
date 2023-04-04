@@ -1,4 +1,6 @@
+mod api;
 mod app;
+mod auth;
 
 use app::*;
 use leptos::*;

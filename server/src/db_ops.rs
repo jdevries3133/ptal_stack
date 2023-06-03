@@ -49,24 +49,6 @@ pub async fn register_user(
     Ok(new_user)
 }
 
-pub async fn reset_password(
-    dbc: &mut PoolConnection<Postgres>,
-    user_id: i32,
-    new_password: &HashedPw,
-) -> Result<()> {
-    query!(
-        "UPDATE password SET salt = $1, digest = $2
-        WHERE user_id = $3",
-        new_password.salt,
-        new_password.digest,
-        user_id
-    )
-    .execute(dbc.as_mut())
-    .await?;
-
-    Ok(())
-}
-
 struct Dog {
     href: String,
 }

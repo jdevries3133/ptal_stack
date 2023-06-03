@@ -1,5 +1,5 @@
 use anyhow::Result;
-use reqwest::{Client, RequestBuilder};
+use reqwest::{Client};
 use serde::{Deserialize, Serialize};
 
 use common::models::{LoginPayload, LoginResponse};
@@ -16,10 +16,6 @@ impl Auth {
         Auth {
             token: token.to_string(),
         }
-    }
-    /// Add the authorization header to a request
-    pub fn add_auth(&self, request: RequestBuilder) -> RequestBuilder {
-        request.header("Authorization", format!("Bearer {}", self.token))
     }
     pub async fn from_credentials(credentials: &LoginPayload) -> Result<Auth> {
         let c = Client::new();

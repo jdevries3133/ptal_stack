@@ -3,7 +3,6 @@ use std::env;
 use actix_cors::Cors;
 use actix_web::{middleware, web, App, HttpServer};
 use dotenvy::dotenv;
-use http;
 use sqlx::postgres::PgPoolOptions;
 
 mod auth;
